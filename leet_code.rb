@@ -14,6 +14,8 @@ class LeetCode
       after += 1
     end
 
+    A = A[0..(before - 1)]  if before > 0
+
     return before
   end # end of method
 
