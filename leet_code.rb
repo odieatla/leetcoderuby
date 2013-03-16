@@ -67,4 +67,36 @@ class LeetCode
     return a.size
   end
 
+  def self.plus_one(digits)
+=begin
+***************************************************************************
+  Given a number represented as an array of digits, plus one to the number.
+***************************************************************************
+=end
+
+    carry = 1
+
+    output = []
+
+    digits.reverse_each.map do |d|
+
+      if d + carry > 9
+        d = 0
+      else
+        d = d + carry
+        carry = 0
+      end
+      #output.push(d)
+      output.unshift(d)
+    end
+
+    #output = output.reverse!
+
+    #output = [1].concat(output) if output[0] == 0
+    output.unshift(1) if output[0] == 0
+
+    return output
+
+  end
+
 end
