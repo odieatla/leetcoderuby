@@ -101,7 +101,7 @@ class LeetCode
 
   def self.length_of_last_word(s)
 
-    return 0  if s.size == 0 || s[-1, 1] == " "
+    return 0  if s.size == 0 || s.gsub(/\s+/, '') == ""
 
     return s.split(" ").last.size
 
