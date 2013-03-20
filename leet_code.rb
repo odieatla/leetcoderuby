@@ -107,4 +107,25 @@ class LeetCode
 
   end
 
+  def self.delete_duplicates_from_sorted_list(head)
+
+    start = head # start is a pointer pointing to node head. not a copy. same as in java.
+
+    return head if head.nil?
+
+    second = head.next
+
+    while !second.nil?
+      if head.val == second.val
+        head.next = second.next
+      else
+        head = second
+      end
+
+      second = second.next
+    end
+
+    return start
+  end
+
 end
