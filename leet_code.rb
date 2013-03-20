@@ -128,4 +128,26 @@ class LeetCode
     return start
   end
 
+  def self.path_sum(tree, sum)
+    return false if tree.nil?
+
+    return self.path_sum_i(tree, sum, 0)
+  end
+
+  def self.path_sum_i(tree, sum, result)
+
+    result += tree.val
+
+    return true if result == sum && tree.left.nil? && tree.right.nil?
+
+    l_r = false
+    r_r = false
+
+    l_r = self.path_sum_i(tree.left, sum, result) if !tree.left.nil?
+
+    r_r = self.path_sum_i(tree.right, sum, result) if !tree.right.nil?
+
+    return l_r || r_r
+  end
+
 end
