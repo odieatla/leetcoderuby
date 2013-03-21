@@ -1,4 +1,7 @@
 class LeetCode
+  @@path_sum = []
+  @@path_sum_sub = []
+
   def self.remove_element(a, elem)
 =begin
 *****************************************************************************************************
@@ -150,4 +153,28 @@ class LeetCode
     return l_r || r_r
   end
 
+  def self.path_sum_2(tree, sum) #return the result array
+    @@path_sum = []
+
+    return @@path_sum if tree.nil?
+
+    self.path_sum_2_i(tree, sum, 0, [])
+
+    return @@path_sum
+
+  end
+
+  def self.path_sum_2_i(tree, sum, result, result_array)
+
+    result += tree.val
+
+    result_array.push(tree.val)
+
+    @@path_sum.push(result_array) if result == sum && tree.left.nil? && tree.right.nil?
+
+    self.path_sum_2_i(tree.left, sum, result, result_array) if !tree.left.nil?
+
+    self.path_sum_2_i(tree.right, sum, result, result_array) if !tree.right.nil?
+
+  end
 end
