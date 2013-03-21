@@ -179,4 +179,25 @@ class LeetCode
     result_array.pop #if number, pass the value, no change to the original var(sum), if obj, pass a pointer, change the original obj(result_array) -- so for obj, use clone if the copy in certain stages is wanted.
 
   end
+
+  def self.is_balanced(root)
+    #left_route = self.is_balanced_i(root.left)
+    #right_route = self.is_balanced_i(root.right)
+
+    #return ((left_route - right_route).abs > 1 ? false : true)
+
+    return true if root.nil?
+
+    return false (self.is_balanced_i(root.left) - self.is_balanced_i(root.right)).abs > 1
+
+    return self.is_balanced(root.left) && self.is_balanced(root.right)
+  end
+
+  def self.is_balanced_i(root)
+
+    return 0 if root.nil?
+
+    return [self.is_balanced_i(root.left), self.is_balanced_i(root.right)].max + 1
+
+  end
 end
