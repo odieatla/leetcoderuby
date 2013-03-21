@@ -170,11 +170,13 @@ class LeetCode
 
     result_array.push(tree.val)
 
-    @@path_sum.push(result_array) if result == sum && tree.left.nil? && tree.right.nil?
+    @@path_sum.push(result_array.clone()) if result == sum && tree.left.nil? && tree.right.nil?
 
     self.path_sum_2_i(tree.left, sum, result, result_array) if !tree.left.nil?
 
     self.path_sum_2_i(tree.right, sum, result, result_array) if !tree.right.nil?
+
+    result_array.pop #if number, pass the value, no change to the original var(sum), if obj, pass a pointer, change the original obj(result_array) -- so for obj, use clone if the copy in certain stages is wanted.
 
   end
 end
