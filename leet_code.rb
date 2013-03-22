@@ -230,4 +230,15 @@ class LeetCode
     return self.is_same_tree(root1.left, root2.left) && self.is_same_tree(root1.right, root2.right)
 
   end
+
+  def self.max_length(root)
+
+    return 0 if root.nil?
+
+    left = self.max_length(root.left)
+
+    right = self.max_length(root.right)
+
+    return ((left > right) ? left : right ) + 1
+  end
 end
