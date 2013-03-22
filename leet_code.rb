@@ -221,4 +221,13 @@ class LeetCode
 
     return result
   end
+
+  def self.is_same_tree(root1, root2)
+    return true if root1.nil? && root2.nil? 
+
+    return false if root1.nil? || root2.nil? || root1.val != root2.val
+
+    return self.is_same_tree(root1.left, root2.left) && self.is_same_tree(root1.right, root2.right)
+
+  end
 end
