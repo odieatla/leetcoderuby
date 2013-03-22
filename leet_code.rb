@@ -231,14 +231,26 @@ class LeetCode
 
   end
 
-  def self.max_length(root)
+  def self.max_depth(root)
 
     return 0 if root.nil?
 
-    left = self.max_length(root.left)
+    left = self.max_depth(root.left)
 
-    right = self.max_length(root.right)
+    right = self.max_depth(root.right)
 
     return ((left > right) ? left : right ) + 1
+  end
+
+  def self.min_depth(root) #tricky than max depth. consider one or both child is 0.
+    return 0 if root.nil?
+
+    left = self.min_depth(root.left)
+
+    right = self.min_depth(root.right)
+
+    return ((left < right) ? right : left) + 1 if (left == 0 || right == 0)
+
+    return ((left < right) ? left : right) + 1
   end
 end
