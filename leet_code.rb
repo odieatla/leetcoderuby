@@ -200,4 +200,25 @@ class LeetCode
     return [self.is_balanced_i(root.left), self.is_balanced_i(root.right)].max + 1
 
   end
+
+  def self.is_symmetric(root)
+
+    return true if root.nil?
+
+    return ((self.is_symmetric_i(root.left, []) == self.is_symmetric_i(root.right, []).reverse) ? true : false)
+  end
+
+  def self.is_symmetric_i(root, result)
+    if !root.nil?
+
+      self.is_symmetric_i(root.left, result)
+
+      result.push(root.val)
+
+      self.is_symmetric_i(root.right, result)
+
+    end
+
+    return result
+  end
 end
