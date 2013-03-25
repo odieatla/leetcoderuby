@@ -2,6 +2,9 @@ class LeetCode
   @@path_sum = []
   @@path_sum_sub = []
 
+  @@ladders = []
+  @@ladder_size = 0
+
   def self.remove_element(a, elem)
 =begin
 *****************************************************************************************************
@@ -188,7 +191,7 @@ class LeetCode
 
     return true if root.nil?
 
-    return false (self.is_balanced_i(root.left) - self.is_balanced_i(root.right)).abs > 1
+    return false if (self.is_balanced_i(root.left) - self.is_balanced_i(root.right)).abs > 1
 
     return self.is_balanced(root.left) && self.is_balanced(root.right)
   end
@@ -252,5 +255,52 @@ class LeetCode
     return ((left < right) ? right : left) + 1 if (left == 0 || right == 0)
 
     return ((left < right) ? left : right) + 1
+  end
+
+  def self.is_one_letter_diff(str1, str2)
+
+    word1 = str1.split('')
+    word2 = str2.split('')
+
+    return false if word1.size != word2.size
+
+    count = 0
+
+    word1.each_with_index do |c, i|
+      if(c != word2[i])
+        count += 1
+        return false if count > 1
+      end
+    end
+
+    return (count == 1) ? true : false
+
+    
+  end
+
+  def self.find_ladders(startw, endw, dict, result)
+
+    if self.is_one_letter_diff(startw, endw) && !result.empty? && (@@ladder_size == 0 || result.size <= @@ladder_size)
+      @@ladders.push(result)
+      @@ladder_size = result.size
+    end
+
+    dict.each do |w|
+      if self.is_one_letter_diff(startw, w) && !result.include?(w)
+        result.push(w)
+        self.find_ladders(w, endw, dict)
+        result.pop(w)
+      end
+    end
+  end
+
+  def self.find_ladders_f(startw, endw, dict)
+
+    @@ladders = []
+    @@ladder_size = 0
+
+    self.find_ladders(startw, endw, dict, [])
+
+    return @@ladders
   end
 end
