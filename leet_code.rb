@@ -303,4 +303,17 @@ class LeetCode
 
     return @@ladders
   end
+
+  def self.two_sum(numbers, target)
+
+    numbers.each_with_index do |n, i|
+
+      if i < numbers.size - 1
+        ((i + 1)..(numbers.size - 1)).each do |index|
+          return [i + 1, index + 1] if n + numbers[index] == target
+        end
+      end
+
+    end
+  end
 end
