@@ -316,4 +316,26 @@ class LeetCode
 
     end
   end
+
+  def self.reverse_int(x)
+    return 0 if x == 0
+
+    y = x.abs
+
+    flag = 1
+
+    flag = -1 if x + y == 0
+
+    out = 0
+
+    begin
+      out = out * 10 + y%10
+      y = y/10
+
+    end while y > 10
+
+    out = out * 10 + y
+
+    return flag * out
+  end
 end
