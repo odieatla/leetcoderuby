@@ -328,13 +328,11 @@ class LeetCode
 
     out = 0
 
-    begin
+    while y > 0
       out = out * 10 + y%10
       y = y/10
 
-    end while y > 10
-
-    out = out * 10 + y
+    end 
 
     return flag * out
   end
