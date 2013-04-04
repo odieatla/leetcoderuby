@@ -336,4 +336,26 @@ class LeetCode
 
     return flag * out
   end
+
+  def self.is_palindrome(x)
+    return false if x < 0
+
+    div = 1
+
+    while x/div >= 10
+      div *= 10
+    end
+
+    while x > 0
+      last = x%10
+      first = x/div
+
+      return false if first != last
+
+      div = div/100
+      x = (x%div)/10
+    end
+
+    return true
+  end
 end
