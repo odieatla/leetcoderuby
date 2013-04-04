@@ -358,4 +358,46 @@ class LeetCode
 
     return true
   end
+
+  def self.roman_to_int_dic(r)
+    case r
+    when 'I'
+      return 1
+    when 'V'
+      return 5
+    when 'X'
+      return 10
+    when 'L'
+      return 50
+    when 'C'
+      return 100
+    when 'D'
+      return 500
+    when 'M'
+      return 1000
+    else
+      return 0
+    end
+  end
+
+  def self.roman_to_int(s)
+    a = s.split('')
+
+    out = 0
+
+    a.each_with_index do |r, i|
+      r = self.roman_to_int_dic(r)
+
+      if i+1 < a.size && r < self.roman_to_int_dic(a[i+1]) #IV
+        out -= r
+      else
+        out += r
+      end
+
+    end
+
+    return out
+  end
+
+
 end
