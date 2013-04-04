@@ -399,5 +399,46 @@ class LeetCode
     return out
   end
 
+  def self.int_to_roman(number)
+    return false if number < 0;
 
+    dict = Hash.new
+
+    dict[1] = 'I'
+    dict[5] = 'V'
+    dict[10] = 'X'
+    dict[50] = 'L'
+    dict[100] = 'C'
+    dict[500] = 'D'
+    dict[1000] = 'M'
+
+    div = 1
+
+    out = ""
+
+    while number > 0
+      n = number%10
+
+      if n == 9 || n == 4
+        out = "#{dict[div]}#{dict[div * (n+1)]}#{out}"
+      elsif n == 0
+        #do nothing
+      else
+        digits = ""
+        m = n - 5
+
+        if m >= 0
+          digits = "#{dict[div*5]}"
+        end
+
+        out = "#{digits}#{dict[div] * (m>=0 ? m : n)}#{out}"
+      end
+
+      div *= 10
+
+      number /= 10
+    end
+
+    return out
+  end
 end
