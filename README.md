@@ -8,5 +8,8 @@ Palindrome Number:
   watch out: 1001, 101
 
 Longest Common Prefix
-  watch: input array size 0, and BE CAREFUL about the DETAIL!
+  watch out: input array size 0, and BE CAREFUL about the DETAIL!
   Not complicated, but easy to get wrong.
+
+Remove Nth Node From End of List
+  only go through list once

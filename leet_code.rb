@@ -455,4 +455,24 @@ class LeetCode
 
     return common
   end
+
+  self.remove_nth_node_from_end_of_list(head, n)
+    start = head
+    end_node = head
+
+    for i in (0..(n - 1))
+      end_node = end_node.next
+    end
+
+    return head.next if end_node.nil?
+
+    while !end_node.next.nil?
+      start = start.next
+      end_node = end_node.next
+    end
+
+    start.next = start.next.next
+
+    return head
+  end
 end
