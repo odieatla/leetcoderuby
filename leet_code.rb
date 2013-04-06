@@ -441,4 +441,18 @@ class LeetCode
 
     return out
   end
+
+  def self.longest_common_prefix(strs)
+    return "" if strs.size == 0
+
+    common = strs[0]
+
+    for i in (0..(common.size - 1))
+      for j in (1..(strs.size - 1))
+        return common[0..(i-1)] if i == strs[j][i].nil? || strs[j][i] != common[i]
+      end
+    end
+
+    return common
+  end
 end
