@@ -6,3 +6,7 @@ reverse integer:
 Palindrome Number:
   if reverse, could overflow
   watch out: 1001, 101
+
+Longest Common Prefix
+  watch: input array size 0, and BE CAREFUL about the DETAIL!
+  Not complicated, but easy to get wrong.
