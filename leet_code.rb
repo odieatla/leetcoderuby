@@ -456,7 +456,7 @@ class LeetCode
     return common
   end
 
-  self.remove_nth_node_from_end_of_list(head, n)
+  def self.remove_nth_node_from_end_of_list(head, n)
     start = head
     end_node = head
 
@@ -475,4 +475,40 @@ class LeetCode
 
     return head
   end
+
+  def self.is_valid_parentheses(str)
+    return false if str == ""
+
+    map = Hash.new
+    map['('] = -1
+    map['['] = -2
+    map['{'] = -3
+    map[')'] = 1
+    map[']'] = 2
+    map['}'] = 3
+
+    stack = []
+
+    str.split('').each do |p|
+      s = stack.last
+
+      if map[p] > 0
+        if map[p] + map[s] != 0
+          return false
+        else
+          stack.pop
+        end
+      else
+        stack.push(p)
+      end
+    end
+
+    if stack.size == 0
+      return true
+    else
+      return false
+    end
+
+  end
+
 end
