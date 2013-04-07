@@ -511,4 +511,30 @@ class LeetCode
 
   end
 
+  def self.merge_sorted_lists(l1, l2)
+
+    cur = ListNode.new
+    curhead = cur
+
+    while !(l1.nil? || l2.nil?)
+
+      if(l1.val <= l2.val)
+        cur.next = l1
+        l1 = l1.next
+      else
+        cur.next = l2
+        l2 = l2.next
+      end
+
+      cur = cur.next
+    end
+
+    cur.next = l2 if l1.nil?
+    cur.next = l1 if l2.nil?
+
+    return curhead.next
+
+
+  end
+
 end
