@@ -528,9 +528,15 @@ class LeetCode
 
       cur = cur.next
     end
-
+=begin
     cur.next = l2 if l1.nil?
     cur.next = l1 if l2.nil?
+=end
+    if !l1.nil?
+      cur.next = l1
+    else
+      cur.next = l2
+    end
 
     return curhead.next
 
