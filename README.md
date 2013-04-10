@@ -16,3 +16,6 @@ Remove Nth Node From End of List
 
 Swap Nodes in Pairs
   special case: input {1} -- input only one node in the list
+
+Search Insert Position
+  watch out: the edge for the situation when target < a[mid]. since mid could = start, but mid couldn't = end

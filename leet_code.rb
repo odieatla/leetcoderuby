@@ -568,4 +568,32 @@ class LeetCode
     return pre.next
   end
 
+  def self.binary_search(array, a_start, a_end, target)
+
+    mid = (a_start + a_end) / 2
+
+    return mid if array[mid] == target
+
+    if a_start == a_end
+      if target > a_start
+        return a_start + 1
+      else
+        return a_start
+      end
+    end
+
+    if(target > array[mid])
+      return self.binary_search(array, mid+1, a_end, target)
+    else
+      return self.binary_search(array, a_start, mid, target) #watch out here. not mid-1 since mid could = start
+    end
+
+  end
+
+  def self.search_insert(a, target)
+    return 0 if a.empty?
+
+    return self.binary_search(a, 0, a.size-1, target)
+  end
+
 end
