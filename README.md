@@ -13,3 +13,6 @@ Longest Common Prefix
 
 Remove Nth Node From End of List
   only go through list once
+
+Swap Nodes in Pairs
+  special case: input {1} -- input only one node in the list

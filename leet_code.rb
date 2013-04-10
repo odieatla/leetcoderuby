@@ -543,4 +543,29 @@ class LeetCode
 
   end
 
+  def self.swap_pairs(head)
+
+    tool = ListNode.new(0)
+
+    tool.next = head
+
+    p2 = ListNode.new(2)
+
+    pre = tool
+
+    while !(tool.next.nil? || tool.next.next.nil?)
+      p2 = tool.next.next
+
+      tool.next.next = p2.next
+      p2.next = tool.next
+      tool.next = p2
+
+      pre.next = p2 if pre.next == head
+
+      tool = tool.next.next
+    end
+
+    return pre.next
+  end
+
 end
